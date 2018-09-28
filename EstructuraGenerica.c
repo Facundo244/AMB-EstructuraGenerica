@@ -138,7 +138,7 @@ int eGen_mostrarListadoConBorrados(eGenerica listado[],int limite)
 int eGen_alta(eGenerica  listado[],int limite)
 {
     int retorno = -1;
-    char nombre[50];
+    char nombre[20];
     int id;
     int indice;
 
@@ -162,3 +162,56 @@ int eGen_alta(eGenerica  listado[],int limite)
     }
     return retorno;
 }
+
+int eGen_baja(eGenerica listado[],int limite, int id)
+{
+    int retorno = 0;
+
+    for(int i = 0; i < limite; i++){
+        if(listado[i].idGenerica == id){
+            listado[i].estado = LIBRE;
+           retorno = 1;
+        }
+    }
+    return retorno;
+}
+
+int eGen_modificacion(eGenerica listado[] ,int limite, int id){
+    int retorno = 0;
+
+    for( int i = 0; i < limite; i++){
+        if(listado[i].idGenerica == id){
+            // modifico campo
+            printf("Ingrese nuevo nombre :");
+            gets(listado[i].nombre);
+            retorno = 1;
+        }
+        break;
+    }
+    return retorno;
+}
+
+int eGen_ordenar(eGenerica listado[] ,int limite)
+  {
+
+      int i;
+      int j;
+      eGenerica auxGen;
+
+      for(i=0;i<limite;i++)
+      {
+          for(j=i+1;j<limite;i++)
+          {
+              if(strcmp(listado[i].nombre , listado[i].nombre)> 0)
+              {
+                auxGen = listado[i];
+                listado[i] = listado[j];
+                listado[j] = auxGen;
+              }
+          }
+
+
+      }
+
+      return 0;
+  }
