@@ -4,7 +4,7 @@
 #include "EstructuraGenerica.h"
 #define TAMANIO 10
 #define OCUPADO 0
-#define LIBRE 1
+#define LIBRE -1
 
 
 
@@ -192,15 +192,19 @@ int eGen_modificacion(eGenerica listado[] ,int limite, int id){
 }
 
 int eGen_ordenar(eGenerica listado[] ,int limite)
-  {
-
+{
+      int retorno = -1;
       int i;
       int j;
       eGenerica auxGen;
 
-      for(i=0;i<limite;i++)
+    if(limite > 0 && listado != NULL)
+    {
+        retorno = -2;
+
+      for(i=0;i<limite-1;i++)
       {
-          for(j=i+1;j<limite;i++)
+          for(j=i+1;j<limite-1;i++)
           {
               if(strcmp(listado[i].nombre , listado[i].nombre)> 0)
               {
@@ -214,4 +218,5 @@ int eGen_ordenar(eGenerica listado[] ,int limite)
       }
 
       return 0;
-  }
+    }
+}
